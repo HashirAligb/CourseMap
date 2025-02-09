@@ -3,9 +3,18 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Columbia CS Courses</title>
   </head>
   <body>
-    Hellp
+    <h1>Columbia Computer Science Courses</h1>
+    <ul>
+      {% for course in courses %} {% if "**Any 3 CS electives" in course %}
+      <li><strong>{{ course.replace("**", "") }}</strong></li>
+      {% else %}
+      <li>{{ course }}</li>
+      {% endif %} {% endfor %}
+    </ul>
+    <button onclick="window.location.href='/plan_schedule'">Let's Plan Your Schedule</button>
+</body>
   </body>
 </html>

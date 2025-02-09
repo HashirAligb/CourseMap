@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Plan Your Schedule</title>
+    <style>
+      .checkbox-container {
+        max-height: 200px;
+        overflow-y: auto;
+        display: flex;
+        flex-direction: column;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Plan Your Schedule</h1>
+
+    <form action="/submit_schedule" method="POST">
+      <div>
+        <label for="year">What year are you in?</label>
+        <select name="year" id="year" required>
+          <option value="Freshman">Freshman</option>
+          <option value="Sophomore">Sophomore</option>
+          <option value="Junior">Junior</option>
+          <option value="Senior">Senior</option>
+        </select>
+      </div>
+
+      <div>
+        <label for="num_courses"
+          >How many CS courses do you want to take per semester?</label
+        >
+        <input
+          type="number"
+          name="num_courses"
+          id="num_courses"
+          min="1"
+          max="6"
+          required
+        />
+      </div>
+
+      <div>
+        <label
+          >What CS courses have you already taken? (Select all that
+          apply)</label
+        ><br />
+        <div class="checkbox-container">
+          <label
+            ><input type="checkbox" name="taken_courses[]" value="COMS W1004" />
+            COMS W1004 - Intro to CS</label
+          >
+          <label
+            ><input type="checkbox" name="taken_courses[]" value="COMS W3134" />
+            COMS W3134 - Data Structures</label
+          >
+          <label
+            ><input type="checkbox" name="taken_courses[]" value="COMS W3157" />
+            COMS W3157 - Advanced Programming</label
+          >
+          <label
+            ><input type="checkbox" name="taken_courses[]" value="COMS W3203" />
+            COMS W3203 - Discrete Math</label
+          >
+          <label
+            ><input type="checkbox" name="taken_courses[]" value="COMS W3261" />
+            COMS W3261 - CS Theory</label
+          >
+          <label
+            ><input type="checkbox" name="taken_courses[]" value="CSEE W3827" />
+            CSEE W3827 - Fundamentals of Computer Systems</label
+          >
+          <label
+            ><input type="checkbox" name="taken_courses[]" value="Calculus 3" />
+            Calculus 3</label
+          >
+          <label
+            ><input
+              type="checkbox"
+              name="taken_courses[]"
+              value="MATH UN1201"
+            />
+            MATH UN1201 - Linear Algebra</label
+          >
+          <label
+            ><input
+              type="checkbox"
+              name="taken_courses[]"
+              value="MATH UN1205"
+            />
+            MATH UN1205 - Calculus 1</label
+          >
+          <label
+            ><input type="checkbox" name="taken_courses[]" value="COMS W4111" />
+            COMS W4111 - Introduction to Databases</label
+          >
+          <label
+            ><input type="checkbox" name="taken_courses[]" value="COMS W4118" />
+            COMS W4118 - Operating Systems</label
+          >
+          <label
+            ><input type="checkbox" name="taken_courses[]" value="COMS W4701" />
+            COMS W4701 - Artificial Intelligence</label
+          >
+          <label
+            ><input type="checkbox" name="taken_courses[]" value="COMS W4771" />
+            COMS W4771 - Machine Learning</label
+          >
+        </div>
+      </div>
+
+      <button type="submit">Submit</button>
+    </form>
+  </body>
+  <script>
+    const form = document.querySelector("form");
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      const formData = new FormData(form);
+      const response = await fetch("/plan_schedule", {
+        method: "POST",
+        body: formData,
+      });
+      const data = await response.json();
+      alert("Your Schedule Plan: " + data.schedule_plan);
+    });
+  </script>
+</html>

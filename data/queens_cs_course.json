@@ -1,0 +1,164 @@
+[
+  {
+    "code": "CS111",
+    "name": "Introduction to Algorithmic Problem-Solving",
+    "credits": 3,
+    "description": "Introduction to the principles of algorithmic analysis and computational implementation. Topics include implementation methodologies, choice and use of data types, objects, classes, and methods.",
+    "prerequisites": [],
+    "next_courses": ["CS211", "CS212", "CS220"]
+  },
+
+  {
+    "code": "Math120",
+    "name": "Discrete Mathematics",
+    "credits": 3,
+    "description": "This course provides fluency in foundational mathematical concepts that appear in future courses in computer science. Topics include sets, basic combinatorics, functions, sequences, series, products, logarithms, divisibility, and modular arithmetic.",
+    "prerequisites": [],
+    "next_courses": ["CS220", "CS240"]
+  },
+
+  {
+    "code": "CS211",
+    "name": "Object-Oriented Programming in C++",
+    "credits": 3,
+    "description": "Object-oriented algorithmic problem solving in C++, including pointers, recursion, inheritance, polymorphism, and data structures.",
+    "prerequisites": ["CS111"],
+    "next_courses": ["CS313"]
+  },
+  {
+    "code": "CS212",
+    "name": "Object-Oriented Programming in Java",
+    "credits": 3,
+    "description": "Object-oriented algorithmic problem solving in Java, including GUIs, recursion, inheritance, and multithreading.",
+    "prerequisites": ["CS111"],
+    "next_courses": ["CS313"]
+  },
+  {
+    "code": "CS220",
+    "name": "Discrete Structures",
+    "credits": 3,
+    "description": "Algorithms, recursion, recurrences, asymptotics, relations, graphs, and trees with applications.",
+    "prerequisites": ["CS111", "Math141"],
+    "next_courses": ["CS313"]
+  },
+  {
+    "code": "CS313",
+    "name": "Data Structures",
+    "credits": 3,
+    "description": "Fundamental data structures like stacks, queues, trees, graphs, and hash tables, along with runtime analysis.",
+    "prerequisites": ["CS211", "CS212", "CS220"],
+    "next_courses": [
+      "CS320",
+      "CS323",
+      "CS331",
+      "CS370",
+      "CS316",
+      "CS340",
+      "CS343"
+    ]
+  },
+  {
+    "code": "CS320",
+    "name": "Theory of Computation",
+    "credits": 3,
+    "description": "Finite state machines, regular languages, grammars, pushdown automata, and Turing machines.",
+    "prerequisites": ["CS313"],
+    "next_courses": []
+  },
+  {
+    "code": "CS323",
+    "name": "Design and Analysis of Algorithms",
+    "credits": 3,
+    "description": "Advanced data structures and problem-solving strategies including divide-and-conquer and dynamic programming.",
+    "prerequisites": ["CS220", "CS313"],
+    "next_courses": []
+  },
+  {
+    "code": "CS331",
+    "name": "Database Systems",
+    "credits": 3,
+    "description": "ER modeling, relational design, SQL, transactions, and query processing.",
+    "prerequisites": ["CS220", "CS313"],
+    "next_courses": []
+  },
+  {
+    "code": "CS370",
+    "name": "Software Engineering",
+    "credits": 3,
+    "description": "Principles of software engineering, including the software life cycle, reliability, and testing.",
+    "prerequisites": ["CS220", "CS313"],
+    "next_courses": []
+  },
+  {
+    "code": "CS316",
+    "name": "Principles of Programming Languages",
+    "credits": 3,
+    "description": "Principles and implementation of programming languages, including procedural, object-oriented, functional, and logic paradigms.",
+    "prerequisites": ["CS220", "CS313"],
+    "next_courses": []
+  },
+  {
+    "code": "CS340",
+    "name": "Operating Systems Principles",
+    "credits": 3,
+    "description": "Principles of operating systems including concurrency, CPU scheduling, and memory management.",
+    "prerequisites": ["CS220", "CS313"],
+    "next_courses": []
+  },
+  {
+    "code": "CS343",
+    "name": "Computer Architecture",
+    "credits": 3,
+    "description": "Instruction set architectures, memory hierarchy, and parallel computing models.",
+    "prerequisites": ["CS240"],
+    "next_courses": []
+  },
+  {
+    "code": "Math141",
+    "name": "Calculus I",
+    "credits": 3,
+    "description": "First semester of calculus covering limits, derivatives, and integrals.",
+    "prerequisites": [],
+    "next_courses": ["Math142"]
+  },
+  {
+    "code": "Math142",
+    "name": "Calculus II",
+    "credits": 3,
+    "description": "Second semester of calculus covering techniques of integration, infinite series, and polar coordinates.",
+    "prerequisites": ["Math141"],
+    "next_courses": ["Math143"]
+  },
+  {
+    "code": "Math143",
+    "name": "Calculus III",
+    "credits": 3,
+    "description": "Third semester of calculus covering multivariable calculus and vector fields.",
+    "prerequisites": ["Math142"],
+    "next_courses": []
+  },
+  {
+    "code": "Math151",
+    "name": "Calculus I (Alternative Path)",
+    "credits": 4,
+    "description": "Alternative Calculus I course for students on a different track.",
+    "prerequisites": [],
+    "next_courses": ["Math152"]
+  },
+  {
+    "code": "Math152",
+    "name": "Calculus II (Alternative Path)",
+    "credits": 4,
+    "description": "Alternative Calculus II course for students on a different track.",
+    "prerequisites": ["Math151"],
+    "next_courses": []
+  },
+  {
+    "code": "Math241",
+    "name": "Probability and Statistics",
+    "credits": 3,
+    "description": "An introduction to the basic concepts and techniques of probability and statistics with an emphasis on applications. Topics include the axioms of probability, combinatorial methods, conditional probability, random variables, expectations, confidence intervals, and hypothesis testing.",
+    "prerequisites": ["Math143", "Math152"],
+    "next_courses": ["CS323", "CS343"]
+  }
+]

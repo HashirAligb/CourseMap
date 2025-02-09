@@ -3,49 +3,47 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
     <title>Degree Map</title>
-    <style>
-      body {
-        font-family: Arial, sans-serif;
-        background-color: #f4f4f4;
-        text-align: center;
-        margin-top: 50px;
-      }
-      h1 {
-        color: #2c3e50;
-      }
-      .button {
-        padding: 15px 30px;
-        font-size: 16px;
-        margin: 10px;
-        cursor: pointer;
-        border: none;
-        border-radius: 5px;
-        text-align: center;
-      }
-      .columbia {
-        background-color: #1e3a8a;
-        color: white;
-      }
-      .queens-college {
-        background-color: #007a3d;
-        color: white;
-      }
-      .button:hover {
-        opacity: 0.8;
-      }
-    </style>
   </head>
   <body>
-    <h1>Welcome to Degree Map</h1>
-    <button class="button columbia" onclick="window.location.href='/columbia'">
-      Columbia University
-    </button>
-    <button
-      class="button queens-college"
-      onclick="window.location.href='/queens_college'"
-    >
-      Queens College
-    </button>
+    <div class="image-container">
+      <img
+        class="image-top"
+        src="https://assets.collegedunia.com/public/college_data/images/studyabroad/appImage/college_1711_29-14:57_Columbia_University.jpeg"
+      />
+      <img
+        class="image-bottom"
+        src="https://macaulay.cuny.edu/wp-content/uploads/2016/07/qc10_bg_000056-1920x1080.jpg"
+        height="50%"
+      />
+    </div>
+
+    <div class="container">
+      <div class="bubble-title">
+        <h1>Welcome to Degree Map</h1>
+      </div>
+      <div style="border-left: 2px solid #000; height: 80px"></div>
+      <div class="column1">
+        <a href="/columbia">
+          <span>Columbia University</span>
+          <span>Columbia University</span>
+          <span>Columbia University</span>
+          <span>Columbia University</span>
+        </a>
+      </div>
+
+      <div class="column2">
+        <a href="/queens_college">
+          <span>Queens College</span>
+          <span>Queens College</span>
+          <span>Queens College</span>
+          <span>Queens College</span>
+        </a>
+      </div>
+    </div>
   </body>
 </html>

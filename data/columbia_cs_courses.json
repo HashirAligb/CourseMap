@@ -1,0 +1,77 @@
+{
+  "prerequisites": ["Calculus 1"],
+  "core_courses": [
+    { "course": "COMS W1004", "name": "Intro to CS", "prerequisites": [] },
+    {
+      "course": "COMS W3134",
+      "name": "Data Structures",
+      "prerequisites": ["COMS W1004"]
+    },
+    {
+      "course": "COMS W3157",
+      "name": "Advanced Programming",
+      "prerequisites": ["COMS W3134"]
+    },
+    { "course": "COMS W3203", "name": "Discrete Math", "prerequisites": [] },
+    {
+      "course": "COMS W3261",
+      "name": "CS Theory",
+      "prerequisites": ["COMS W3203"]
+    },
+    {
+      "course": "CSEE W3827",
+      "name": "Fundamentals of Computer Systems",
+      "prerequisites": []
+    }
+  ],
+  "math_requirements": [
+    {
+      "course": "Calculus 3",
+      "alternatives": ["MATH UN1201", "MATH UN1205", "APMA E2000"]
+    },
+    {
+      "course": "Linear Algebra",
+      "alternatives": [
+        "COMS W3251",
+        "APMA E3101",
+        "APMA E2101",
+        "MATH UN2010",
+        "MATH UN2015"
+      ]
+    },
+    {
+      "course": "Probability",
+      "alternatives": [
+        "STAT UN1201",
+        "STAT GU4001",
+        "STAT GU4203",
+        "IEOR E3658",
+        "MATH UN2015"
+      ]
+    }
+  ],
+  "cs_electives": "3 COMS or jointly listed CS courses at the 3000-level or higher, at least 3 points each",
+  "area_foundation_courses": [
+    "COMS W4111 Introduction to Databases",
+    "COMS W4113 Distributed Systems Fundamentals",
+    "COMS W4115 Programming Languages and Translators",
+    "COMS W4118 Operating Systems",
+    "CSEE W4119 Computer Networks",
+    "COMS W4152 Engineering Software-as-a-Service",
+    "COMS W4156 Software Engineering",
+    "COMS W4160 Computer Graphics",
+    "COMS W4167 Computer Animation",
+    "COMS W4170 User Interface Design",
+    "COMS W4181 Security 1",
+    "CSOR W4231 Analysis of Algorithms",
+    "COMS W4236 Introduction to Computational Complexity",
+    "COMS W4701 Artificial Intelligence",
+    "COMS W4705 Natural Language Processing",
+    "COMS W4731 Computer Vision",
+    "COMS W4733 Computational Aspects of Robotics",
+    "CBMF W4761 Computational Genomics",
+    "COMS W4771 Machine Learning",
+    "CSEE W4824 Computer Architecture",
+    "CSEE W4868 System-on-Chip Platforms"
+  ]
+}
