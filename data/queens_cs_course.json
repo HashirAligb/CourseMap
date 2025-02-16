@@ -16,7 +16,15 @@
     "prerequisites": [],
     "next_courses": ["CS220", "CS240"]
   },
-
+  
+  { 
+    "code": "CS 240",
+    "name": "Computer Organization and Assembly Language",
+    "credits": 3,
+    "description": "Principles of computer design and implementation. Instruction set architecture and register-transfer level execution; storage formats; binary data encoding; bus structures; assembly language programming.",
+    "prerequisites": ["CS111"],
+    "next_courses": ["CS316", "CS340","CS343"]
+  },
   {
     "code": "CS211",
     "name": "Object-Oriented Programming in C++",
