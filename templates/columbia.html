@@ -1,20 +1,183 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Columbia CS Courses</title>
-  </head>
-  <body>
-    <h1>Columbia Computer Science Courses</h1>
-    <ul>
-      {% for course in courses %} {% if "**Any 3 CS electives" in course %}
-      <li><strong>{{ course.replace("**", "") }}</strong></li>
-      {% else %}
-      <li>{{ course }}</li>
-      {% endif %} {% endfor %}
-    </ul>
-    <button onclick="window.location.href='/plan_schedule'">Let's Plan Your Schedule</button>
-</body>
-  </body>
-</html>
+{% extends "layout.html" %}
+
+{% block content %}
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+  }
+  
+  /* Container: centered horizontally and vertically */
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 40vh;
+  }
+
+  /* Centered the form container */
+  .form-container {
+    max-width: 100%;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .row {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1200px;  /* To prevent large width */
+  }
+
+  select,
+  button {
+    padding: 10px;
+    font-size: 16px;
+  }
+
+  .course-checkboxes {
+    max-height: 100px;
+    overflow-y: auto;
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: white;
+  }
+
+  /* Schedule Output Styling */
+  #scheduleResult {
+    margin-top: 20px;
+    font-weight: bold;
+    white-space: pre-wrap;
+    padding: 10px;
+    background-color: #e9f7fc;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    display: block;
+  }
+
+  .form-group {
+    margin-bottom: 20px;
+  }
+
+  /* Example Schedule on initial load */
+  #exampleSchedule {
+    padding: 10px;
+    padding-bottom: 70px;
+    background-color: #ffffff;
+    border: 1px solid #000000;
+    border-radius: 5px;
+    font-size: 14px;
+    color: #adabab;
+  }
+
+</style>
+<h1 class="text-center">Columbia University Course Planner</h1>
+<div class="container">
+  <div class="row" id="mainRow">
+    <!-- Left Column: Course Selection Form -->
+    <div class="col-md-6">
+      <div class="form-container">
+        <form id="plannerForm">
+          <div class="form-group">
+            <label for="year"><strong>What year are you?</strong></label>
+            <select id="year" name="year" class="form-control" required>
+              <option value="freshman">Freshman</option>
+              <option value="sophomore">Sophomore</option>
+              <option value="junior">Junior</option>
+              <option value="senior">Senior</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="semester"><strong>What semester are you in?</strong></label>
+            <select id="semester" name="semester" class="form-control" required>
+              <option value="fall">Fall</option>
+              <option value="spring">Spring</option>
+              <option value="summer">Summer</option>
+              <option value="winter">Winter</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label><strong>Select the courses you have already taken:</strong></label>
+            <button type="button" class="btn btn-info btn-sm mb-2" data-toggle="collapse" data-target="#courseList">
+              Show/Hide Courses
+            </button>
+            <div id="courseList" class="collapse course-checkboxes">
+              <label><input type="checkbox" value="COMS W1004" /> COMS W1004 - Intro to CS</label><br>
+              <label><input type="checkbox" value="COMS W3134" /> COMS W3134 - Data Structures</label><br>
+              <label><input type="checkbox" value="COMS W3157" /> COMS W3157 - Advanced Programming</label><br>
+              <label><input type="checkbox" value="COMS W3203" /> COMS W3203 - Discrete Math</label><br>
+              <label><input type="checkbox" value="COMS W3261" /> COMS W3261 - CS Theory</label><br>
+              <label><input type="checkbox" value="CSEE W3827" /> CSEE W3827 - Fundamentals of Computer Systems</label><br>
+              <label><input type="checkbox" value="Calculus 3" /> Calculus 3</label><br>
+              <label><input type="checkbox" value="MATH UN1201" /> MATH UN1201 - Linear Algebra</label><br>
+              <label><input type="checkbox" value="MATH UN1205" /> MATH UN1205 - Calculus 1</label><br>
+              <label><input type="checkbox" value="COMS W4111" /> COMS W4111 - Introduction to Databases</label><br>
+              <label><input type="checkbox" value="COMS W4118" /> COMS W4118 - Operating Systems</label><br>
+              <label><input type="checkbox" value="COMS W4701" /> COMS W4701 - Artificial Intelligence</label><br>
+              <label><input type="checkbox" value="COMS W4771" /> COMS W4771 - Machine Learning</label><br>
+            </div>
+          </div>
+
+          <button type="button" class="btn btn-primary btn-block" onclick="submitForm()">
+            Generate Schedule
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Right Column: Schedule Output -->
+    <div class="col-md-6">
+      <!-- Display Example Schedule initially -->
+      <div id="exampleSchedule">
+        <h4>Example Schedule (No Selection Yet)</h4>
+        <ul>
+          <li>COMS W1004: Introduction to Computer Science</li><br>
+          <li>COMS W3134: Data Structures</li><br>
+          <li>COMS W3157: Advanced Programming</li><br>
+          <li>COMS W3203: Discrete Math</li><br>
+          <li>COMS W3261: Computer Science Theory</li>
+        </ul>
+      </div>
+      <div id="scheduleResult" class="alert alert-info" style="display: none;"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function submitForm() {
+    const year = document.getElementById("year").value;
+    const semester = document.getElementById("semester").value;
+    const selectedCourses = Array.from(
+      document.querySelectorAll(".course-checkboxes input:checked")
+    ).map((checkbox) => checkbox.value);
+
+    document.getElementById("exampleSchedule").style.display = "none";
+    document.getElementById("scheduleResult").style.display = "block";
+    document.getElementById("scheduleResult").innerText = "Generating schedule...";
+
+    fetch("/generate_schedule", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        year,
+        semester,
+        completedCourses: selectedCourses,
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        document.getElementById("scheduleResult").innerText = data.schedule;
+      })
+      .catch((error) => {
+        document.getElementById("scheduleResult").innerText = "Error generating schedule.";
+        console.error("Error:", error);
+      });
+  }
+</script>
+
+{% endblock %}
